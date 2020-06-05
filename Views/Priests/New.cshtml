@@ -1,0 +1,78 @@
+﻿@model MyFirstMVC.Models.Priest
+@{
+    ViewBag.Title = "NewPriest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Εισαγωγή νέου Ιερέα </h2>
+
+@using (Html.BeginForm("Save", "Priests"))
+{
+
+    <div class="form-group">
+        <h4>
+            @Html.LabelFor(m => m.Name)
+        </h4>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <div class="form-group">
+        <h4>
+            @Html.LabelFor(m => m.LastName)
+        </h4>
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+
+    <div class="form-group">
+        <h4>
+            @Html.LabelFor(m => m.PhoneNumber)
+        </h4>
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber)
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsEfimerios) Εφημέριος
+        </label>
+
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsEpoxiakos) Εποχιακός
+        </label>
+
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsIerokirikas) Ιεροκήρυκας
+        </label>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Available) Διαθέσιμος
+        </label>
+    </div>
+
+
+
+
+
+
+    @*<div class="form-group">
+            <h4>
+                @Html.LabelFor(m => m.Church.Id)
+            </h4>
+            @Html.TextBoxFor(m => m.Church.Id, new { @class = "form-control" })
+        </div>
+    *@
+
+
+    @Html.HiddenFor(m => m.Id);
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}

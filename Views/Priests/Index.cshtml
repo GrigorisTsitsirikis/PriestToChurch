@@ -1,0 +1,79 @@
+﻿@model MyFirstMVC.ViewModels.PriestsModel
+
+
+@{
+    ViewBag.Message = "Priests";
+    int i = 0;
+}
+
+@*
+    This is a comment on multiple lines
+*@
+
+@{ var className = Model.Priests.Count > 3 ? "popular" : null;
+}
+
+@*@{
+        var trClass = string.IsNullOrEmpty(Model.Priests) ? "hide" : "";
+    }
+*@
+
+
+@if (Model.Priests.Count == 0)
+{
+    <h2> Αδυναμία εύρεσης ιερέων.</h2>
+    <p>
+        <strong>
+            Δεν υπάρχει κανένας ιερέας στη βάση δεδομένων.<br>
+            Παρακαλώ εισάγεται κάποιον πηγαίνοντας στην καρτέλα --> <a href="/Priests/New"> "Προσθήκη Ιερέα" </a>
+        </strong>
+    </p>
+}
+
+
+
+
+else
+{
+    <h2>Πλήρης Λίστα Ιερέων</h2>
+    <div>@Html.ActionLink("Προσθηκη", "New", "Priests", null, new { @class = "btn btn-primary" })</div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>A/A</th>
+                <th>Επίθετο</th>
+                <th>Όνομα</th>
+                <th>Ενορία</th>
+                <th>Αριθμός Τηλεφώνου</th>
+                <th>Θέση</th>
+                <th>Διαθεσιμότητα</th>
+                <th>Επεξεργασία Ιερέα</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var priest in Model.Priests)
+            {
+
+                i = i + 1;
+
+            <tr>
+                <td><text>@i</text></td>
+
+                <td>@Html.ActionLink(@priest.LastName, "Edit/" + priest.Id, "Priests", null, null)</td>
+                <td><text>@priest.Name</text></td>
+                <td>Ένορία @priest.Id</td>
+                <td>@priest.PhoneNumber</td>
+                <td>@(priest.IsEfimerios ? "Εφημέριος" : priest.IsEpoxiakos ? "Εφημέριος-Εποχιακός" : priest.IsIerokirikas? "Ιεροκήρυκας" : null)</td>
+                <td>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
+                <td>@Html.ActionLink("Μονιμη Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
+
+            </tr>
+
+
+            }
+        </tbody>
+    </table>
+}
+

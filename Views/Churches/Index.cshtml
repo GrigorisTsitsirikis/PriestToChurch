@@ -1,0 +1,62 @@
+﻿@model MyFirstMVC.ViewModels.PriestsModel
+
+
+
+
+@{
+    ViewBag.Message = "Churches";
+    int i =0;
+}
+
+@*
+    This is a comment on multiple lines
+*@
+
+@{ var className = Model.Churches.Count > 3 ? "popular" : null;
+}
+
+
+
+<h2 class=@className>Εκκλησίες</h2>
+
+@if (Model.Churches.Count == 0)
+{
+    <p>Δεν υπάρχει Εκκλησία στη λίστα</p>
+}
+else
+{
+    <h2>Πλήρης Λίστα Εκκλησιών</h2>
+    <div>@Html.ActionLink("Προσθηκη", "New", "churches", null, new { @class = "btn btn-primary" })</div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>A/A</th>
+                <th>Ενορία</th>
+                <th>id ενοριας</th>
+                <th>Επεξεργασία Ενορίας</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var church in Model.Churches)
+            {
+
+                i = i + 1;
+
+                <tr>
+                    <td><text>@i</text></td>
+
+                    <td>@Html.ActionLink(church.Name, "Edit/" + church.Id, "churches", null, null)</td>
+                    <td>Id @church.Id</td>
+                    <td>@Html.ActionLink("Μονιμη Διαγραφη", "Delete/" + church.Id, "churchs", null, new { @class = "btn btn-primary" })</td>
+
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+}
+
+

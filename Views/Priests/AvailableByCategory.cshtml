@@ -1,0 +1,129 @@
+﻿@model MyFirstMVC.ViewModels.PriestCategories
+
+
+@{
+    ViewBag.Message = "AvailableByCategory";
+    int i = 0;
+}
+
+@*
+    This is a comment on multiple lines
+*@
+
+@{ var className = Model.Efimerioi.Count > 3 ? "popular" : null;
+}
+
+@*@{
+        var trClass = string.IsNullOrEmpty(Model.Priests) ? "hide" : "";
+    }
+*@
+
+
+@if (Model.Efimerioi.Count == 0 && Model.Epoxiakoi.Count == 0 && Model.Ierokyrikes.Count == 0)
+{
+    <h2> Αδυναμία εύρεσης ιερέων.</h2>
+    <p>
+        <strong>
+            Δεν υπάρχει κανένας διαθέσιμος ιερέας στη βάση δεδομένων σε κάποια κατηγορία (εφημέριος,εποχιακός,ιεροκήρυκας).<br>
+            Παρακαλώ εισάγεται κάποιον πηγαίνοντας στην καρτέλα --> <a href="/Priests/Index"> "Επεξεργασία Ιερέα" </a>
+        </strong>
+    </p>
+}
+
+
+
+
+else
+{
+    <h2>Εφημέριοι Διαθέσιμοι Ιερείς</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>A/A</th>
+                <th>Επίθετο</th>
+                <th>Όνομα</th>
+                <th>Ενορία</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var efimerios in Model.Efimerioi)
+            {
+
+                i = i + 1;
+
+                <tr>
+                    <td><text>@i</text></td>
+
+                    <td>@Html.ActionLink(efimerios.LastName, "Edit/" + efimerios.Id, "Priests", null, null)</td>
+                    <td><text>@efimerios.Name</text></td>
+                    <td>Ένορία @efimerios.Id</td>>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h2>Εποχιακοί Διαθέσιμοι Ιερείς</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>A/A</th>
+                <th>Επίθετο</th>
+                <th>Όνομα</th>
+                <th>Ενορία</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var epoxiakos in Model.Epoxiakoi)
+            {
+
+                i = i + 1;
+
+                <tr>
+                    <td><text>@i</text></td>
+
+                    <td>@Html.ActionLink(epoxiakos.LastName, "Edit/" + epoxiakos.Id, "Priests", null, null)</td>
+                    <td><text>@epoxiakos.Name</text></td>
+                    <td>Ένορία @epoxiakos.Id</td>>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h2>Ιεροκήρυκες Διαθέσιμοι Ιερείς</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>A/A</th>
+                <th>Επίθετο</th>
+                <th>Όνομα</th>
+                <th>Ενορία</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ierokyrikas in Model.Ierokyrikes)
+            {
+
+                i = i + 1;
+
+                <tr>
+                    <td><text>@i</text></td>
+
+                    <td>@Html.ActionLink(ierokyrikas.LastName, "Edit/" + ierokyrikas.Id, "Priests", null, null)</td>
+                    <td><text>@ierokyrikas.Name</text></td>
+                    <td>Ένορία @ierokyrikas.Id</td>>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

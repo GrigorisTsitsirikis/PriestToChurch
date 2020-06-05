@@ -1,0 +1,71 @@
+﻿@model MyFirstMVC.ViewModels.PriestCategories
+
+
+@{
+    ViewBag.Message = "AvailableByCategory";
+    int i = 0;
+}
+
+@*
+    This is a comment on multiple lines
+*@
+
+@{ var className = Model.Efimerioi.Count > 3 ? "popular" : null;
+}
+
+@*@{
+        var trClass = string.IsNullOrEmpty(Model.Priests) ? "hide" : "";
+    }
+*@
+
+
+@if (Model.Efimerioi.Count == 0 && Model.Epoxiakoi.Count == 0 && Model.Ierokyrikes.Count == 0)
+{
+    <h2> Αδυναμία εύρεσης ιερέων.</h2>
+    <p>
+        <strong>
+            Δεν υπάρχει κανένας διαθέσιμος ιερέας στη βάση δεδομένων σε κάποια κατηγορία (εφημέριος,εποχιακός,ιεροκήρυκας).<br>
+            Παρακαλώ εισάγεται κάποιον πηγαίνοντας στην καρτέλα --> <a href="/Priests/Index"> "Επεξεργασία Ιερέα" </a>
+        </strong>
+    </p>
+}
+else if (Model.AssignedChurches.Count == 0)
+{
+    <h2> Αδυναμία εύρεσης εκκλησιών.</h2>
+    <p>
+        <strong>
+            Δεν υπάρχει καμμία εκκλησία στη βάση δεδομένων.<br>
+            Παρακαλώ εισάγεται κάποιον πηγαίνοντας στην καρτέλα --> <a href="/Churches/New"> "Προσθήκη εκκλησίας" </a>
+        </strong>
+    </p>
+}
+
+
+else
+{
+
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.AllAvailablePriests)
+        @Html.DropDownListFor(m => m.Efimerioi, new SelectList(Model.AllAvailablePriests, "LastName", "LastName", "Επιλέξτε Διαθέσιμο  Ιερέα για ανάθεση"), new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.AssignedChurches)
+        @Html.DropDownListFor(m => m.AssignedChurches, new SelectList(Model.AssignedChurches, "Name", "Name", "Επιλέξτε σε ποια εκκλησία"), new { @class = "form-control" })
+
+    </div>
+
+
+    @Html.EditorFor(model=>model.DatePicker,new { HtmlTextWriterAttribute = new { @class = "datepicker" }});
+
+    <button type="submit" class="btn btn-primary">Αναθεση</button>
+}
+
+
+
+

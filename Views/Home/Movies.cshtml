@@ -1,0 +1,28 @@
+﻿@model MyFirstMVC.ViewModels.MoviesModel
+
+
+@{
+    ViewBag.Title = "Movies";
+}
+<h2>@ViewBag.Title</h2>
+
+
+
+
+
+@*<h2 class=@className>MovieList</h2>*@
+
+@if (Model.Movies.Count == 0)
+{
+    <p>There is no Movie in the list</p>
+}
+else
+{
+    <ul>
+        @foreach (var movie in Model.Movies)
+        {
+        <a href="/movies/Details/@movie.Id"><li>@movie.Name</li></a>
+        }
+    </ul>
+}
+

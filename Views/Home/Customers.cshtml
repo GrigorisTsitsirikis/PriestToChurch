@@ -1,0 +1,33 @@
+﻿
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+
+
+@*
+    This is a comment on multiple lines
+*@
+
+@{ var className = Model.Customers.Count > 3 ? "popular" : null;
+}
+
+
+
+<h2 class=@className>Customers!</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <p>There is no Customer in the list</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <a href="/Customers/Details/@customer.Id"><li>@customer.Name</li></a>
+        }
+    </ul>
+}
+
