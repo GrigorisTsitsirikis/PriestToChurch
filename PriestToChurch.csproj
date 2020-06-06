@@ -139,6 +139,39 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005202208322_InitialModel.cs" />
+    <Compile Include="Migrations\202005202208322_InitialModel.Designer.cs">
+      <DependentUpon>202005202208322_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005202249474_PopulatePriestsAndChurches.cs" />
+    <Compile Include="Migrations\202005202249474_PopulatePriestsAndChurches.Designer.cs">
+      <DependentUpon>202005202249474_PopulatePriestsAndChurches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005202257514_ApplyAnnotationsToChurchandPriest.cs" />
+    <Compile Include="Migrations\202005202257514_ApplyAnnotationsToChurchandPriest.Designer.cs">
+      <DependentUpon>202005202257514_ApplyAnnotationsToChurchandPriest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005221910245_PriestModelChanges.cs" />
+    <Compile Include="Migrations\202005221910245_PriestModelChanges.Designer.cs">
+      <DependentUpon>202005221910245_PriestModelChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005240058390_PriestModelValidations.cs" />
+    <Compile Include="Migrations\202005240058390_PriestModelValidations.Designer.cs">
+      <DependentUpon>202005240058390_PriestModelValidations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005242316196_PriestColumns.cs" />
+    <Compile Include="Migrations\202005242316196_PriestColumns.Designer.cs">
+      <DependentUpon>202005242316196_PriestColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005302000284_Availability.cs" />
+    <Compile Include="Migrations\202005302000284_Availability.Designer.cs">
+      <DependentUpon>202005302000284_Availability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005302334350_UpdateDb.cs" />
+    <Compile Include="Migrations\202005302334350_UpdateDb.Designer.cs">
+      <DependentUpon>202005302334350_UpdateDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Church.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -159,13 +192,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Migrations\προδιαγραφές.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -191,10 +227,42 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Home\Customers.cshtml" />
-    <Content Include="Views\Home\Movies.cshtml" />
+    <Content Include="Views\Churches\Details.cshtml" />
+    <Content Include="Views\Churches\Index.cshtml" />
+    <Content Include="Views\Churches\New.cshtml" />
+    <Content Include="Views\Priests\AssignPriestToChurch.cshtml" />
+    <Content Include="Views\Priests\AvailableByCategory.cshtml" />
+    <Content Include="Views\Priests\Details.cshtml" />
+    <Content Include="Views\Priests\Index.cshtml" />
+    <Content Include="Views\Priests\New.cshtml" />
+    <Content Include="Views\Priests\PriestForm.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005202208322_InitialModel.resx">
+      <DependentUpon>202005202208322_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005202249474_PopulatePriestsAndChurches.resx">
+      <DependentUpon>202005202249474_PopulatePriestsAndChurches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005202257514_ApplyAnnotationsToChurchandPriest.resx">
+      <DependentUpon>202005202257514_ApplyAnnotationsToChurchandPriest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005221910245_PriestModelChanges.resx">
+      <DependentUpon>202005221910245_PriestModelChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005240058390_PriestModelValidations.resx">
+      <DependentUpon>202005240058390_PriestModelValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005242316196_PriestColumns.resx">
+      <DependentUpon>202005242316196_PriestColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005302000284_Availability.resx">
+      <DependentUpon>202005302000284_Availability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005302334350_UpdateDb.resx">
+      <DependentUpon>202005302334350_UpdateDb.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
