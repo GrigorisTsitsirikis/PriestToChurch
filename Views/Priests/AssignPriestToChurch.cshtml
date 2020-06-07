@@ -19,10 +19,22 @@
 *@
 
 
-    <link rel="stylesheet" href="~/Content/chosen.css" >
-      <script src="~/Scripts/chosen.jquery.js"> </script>
+<link rel="stylesheet" href="~/Content/chosen.css">
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 
 
+@section scripts {
+    <script src="~/Scripts/chosen.jquery.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>$('.chosen-select').chosen();</script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker(
+                { dateFormat: "yy-mm-dd" }
+            );
+    </script>
+
+}
 
 @if (Model.Efimerioi.Count == 0 && Model.Epoxiakoi.Count == 0 && Model.Ierokyrikes.Count == 0)
 {
@@ -49,33 +61,30 @@ else if (Model.AssignedChurches.Count == 0)
 else
 {
     <h2> Διαθέσιμοι Ιερείς για Ανάθεση</h2>
-    using(Html.BeginForm())
+    using (Html.BeginForm("PriestChurch", "Priests"))
     {
-<div class="form-group">
+        <div class="form-group">
 
-    @Html.LabelFor(m => m.AllAvailablePriests)
-    @*@Html.DropDownListFor(m => m.AllAvailablePriests, new SelectList(Model.AllAvailablePriests, "LastName", "LastName", "Επιλέξτε Διαθέσιμο  Ιερέα για ανάθεση"), new { @class = "form-control chosen-select" })*@
-    @Html.DropDownListFor(x => x.AllAvailablePriests,Model.AllAvailablePriests.Select(x=>new SelectListItem { Text= x.LastName.ToString(), Value = x.LastName.ToString() }), new { @class = "form-control chosen-select" ,})
-</div>
+            @Html.LabelFor(m => m.AllAvailablePriests)
+            @*@Html.DropDownListFor(m => m.AllAvailablePriests, new SelectList(Model.AllAvailablePriests, "LastName", "LastName", "Επιλέξτε Διαθέσιμο  Ιερέα για ανάθεση"), new { @class = "form-control chosen-select" })*@
+            @Html.DropDownListFor(x => x.AllAvailablePriests, Model.AllAvailablePriests.Select(x => new SelectListItem { Text = x.LastName.ToString() + " " + x.Name.ToString(), Value = x.LastName.ToString()}), new { @class = "form-control chosen-select" })
+        </div>
 
-            <h2> Εκκλησίες</h2>
+        <h2> Εκκλησίες</h2>
 
-            <div class="form-group">
+        <div class="form-group">
 
-                @Html.LabelFor(m => m.AssignedChurches)
-                @*@Html.DropDownListFor(m => m.AssignedChurches, new SelectList(Model.AssignedChurches, "Name", "Name", "Επιλέξτε σε ποια εκκλησία"), new { @class = "form-control" })*@
-                @Html.DropDownListFor(x => x.AssignedChurches, Model.AssignedChurches.Select(x => new SelectListItem { Text = x.Name.ToString(), Value = x.Name.ToString() }), new { @class = "form-control chosen-select", })
+            @Html.LabelFor(m => m.AssignedChurches)
+            @*@Html.DropDownListFor(m => m.AssignedChurches, new SelectList(Model.AssignedChurches, "Name", "Name", "Επιλέξτε σε ποια εκκλησία"), new { @class = "form-control" })*@
+            @Html.DropDownListFor(x => x.AssignedChurches, Model.AssignedChurches.Select(x => new SelectListItem { Text = x.Name.ToString(), Value = x.Name.ToString() }), new { @class = "form-control chosen-select", })
 
-            </div>
-
-
-            @Html.EditorFor(model => model.DatePicker, new { HtmlTextWriterAttribute = new { @class = "datepicker" } });
-
-            }
-            <button type="submit" class="btn btn-primary">Αναθεση</button>
-        }
+        </div>
 
 
+        @Html.EditorFor(model => model.DatePicker, new { @class = "datepicker" });
 
+       // @Html.ActionLink("test", "PriestChurch/" + Id, "Priests", null, new { @class = "btn btn-primary" })*@
+        <button type="submit" class="btn btn-primary">Αναθεση</button>
+    }
+}
 
-<script> $('.chosen-select').chosen();</script>

@@ -68,7 +68,7 @@ namespace MyFirstMVC.Controllers
                 Efimerioi = availableEfimerioi,
                 Epoxiakoi = availableEpoxiakoi,
                 Ierokyrikes = availableIerokyrikes,
-                AllAvailablePriests=availablePriests
+                AllAvailablePriests=availablePriests.OrderBy(x=>x.LastName).ToList()
 
             };
 
@@ -86,6 +86,32 @@ namespace MyFirstMVC.Controllers
         }
 
 
+        /// <summary>
+        /// in progress
+        /// </summary>
+        /// <param name="priestCategories"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult PriestChurch(PriestCategories priestCategories)
+        {
+            ViewBag.Message = "test";
+           
+          //  var priestInDb = _context.Priests.Single(p => p.Id == priestCategories.AllAvailablePriests.aId);
+
+         //   priestInDb.Available = false;
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+            return RedirectToAction("AssignPriestToChurch", "Priests");
+
+
+        }
 
 
 
