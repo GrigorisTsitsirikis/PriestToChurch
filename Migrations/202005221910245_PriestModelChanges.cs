@@ -13,13 +13,12 @@
             CreateIndex("dbo.Priests", "Church_Id");
             AddForeignKey("dbo.Priests", "Church_Id", "dbo.Churches", "Id");
 
-            Sql("INSERT INTO Priests (LastName,Name,PhoneNumber) VALUES ('ΤΣΙΤΣΙΡΙΚΗΣ','ΘΕΜΙΣΤΟΚΛΗΣ','6944612999')");
-
-
-
+            Sql("UPDATE Priests SET LastName=N'ΤΣΙΤΣΙΡΙΚΗΣ', PhoneNumber='6944612999' WHERE Name=N'Π.ΘΕΜΙΣΤΟΚΛΗΣ'");
+            Sql("UPDATE Priests SET LastName=N'ΒΑΜΒΙΝΗΣ' WHERE Name=N'Π.ΘΩΜΑΣ'");
+            Sql("UPDATE Priests SET LastName=N'ΠΑΠΑΒΑΡΝΑΒΑΣ' WHERE Name=N'Π.ΓΕΩΡΓΙΟΣ'");
 
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Priests", "Church_Id", "dbo.Churches");

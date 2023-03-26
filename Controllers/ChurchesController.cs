@@ -104,8 +104,6 @@ namespace MyFirstMVC.Controllers
                 churchInDb.Name = church.Name;
 
             }
-
-
             try
             {
                 _context.SaveChanges();

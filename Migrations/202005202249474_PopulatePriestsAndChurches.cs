@@ -7,17 +7,19 @@
     {
         public override void Up()
         {
-            Sql("INSERT INTO Churches (Name) VALUES ('ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ')");
-            Sql("INSERT INTO Churches (Name) VALUES ('ΑΓΙΟΣ ΔΗΜΗΤΡΙΟΣ')");
+            //initial Churches 
+            Sql("INSERT INTO Churches (Name) VALUES (N'ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ')");
+            Sql("INSERT INTO Churches (Name) VALUES (N'ΑΓΙΟΣ ΔΗΜΗΤΡΙΟΣ')");
+
+            //initial Priests
+            Sql("INSERT INTO Priests (Name) VALUES (N'Π.ΘΕΜΙΣΤΟΚΛΗΣ')");
+            Sql("INSERT INTO Priests (Name) VALUES (N'Π.ΘΩΜΑΣ')");
+            Sql("INSERT INTO Priests (Name) VALUES (N'Π.ΓΕΩΡΓΙΟΣ')");
 
 
-            Sql("INSERT INTO Priests (Name) VALUES ('Π.ΘΕΜΙΣΤΟΚΛΗΣ')");
-            Sql("INSERT INTO Priests (Name) VALUES ('Π.ΚΑΛΛΙΝΙΚΟΣ')");
-            Sql("INSERT INTO Priests (Name) VALUES ('Π.ΘΩΜΑΣ')");
-            Sql("INSERT INTO Priests (Name) VALUES ('Π.ΓΕΩΡΓΙΟΣ')");
 
         }
-        
+
         public override void Down()
         {
         }

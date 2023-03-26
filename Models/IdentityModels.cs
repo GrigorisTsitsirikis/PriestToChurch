@@ -14,7 +14,7 @@ namespace MyFirstMVC.Models
         public DbSet<Priest> Priests { get; set; }
         public DbSet<Church> Churches { get; set; }
         public ApplicationDbContext()
-            : base("DefaultBase",throwIfV1Schema: false)
+            : base("ChurchDatabase",throwIfV1Schema: false)
         {
         }
 
