@@ -94,11 +94,13 @@ namespace MyFirstMVC.Controllers
         [HttpPost]
         public ActionResult PriestChurch(PriestCategories priestCategories)
         {
-            ViewBag.Message = "test";
-           
-          //  var priestInDb = _context.Priests.Single(p => p.Id == priestCategories.AllAvailablePriests.aId);
 
-         //   priestInDb.Available = false;
+            ViewBag.Message = "test";
+
+            var availablePriests = priestCategories.AllAvailablePriests;
+
+            //  var priestInDb = _context.Priests.Single(p => p.Id == priestCategories.AllAvailablePriests.Find(x=>x.Id);
+            //priestInDb.Available = false;
 
             try
             {
@@ -109,10 +111,39 @@ namespace MyFirstMVC.Controllers
                 Console.WriteLine(e);
             }
             return RedirectToAction("AssignPriestToChurch", "Priests");
-
-
         }
 
+
+        ///// <summary>
+        ///// τεστ 2
+        ///// </summary>
+        ///// <param name="priestCategories"></param>
+        ///// <returns></returns>
+        //[HttpPost]
+        //public ActionResult PriestChurch(Priest priest)
+        //{
+
+        //    ViewBag.Message = "test";
+
+        //        var priestInDb = _context.Priests.Single(p => p.Id == priest.Id);
+
+        //        //TryUpdateModel(priestInDb); //official approach secur issues.
+        //        //Mapper.Map(priest,priestInDb) ///dto in request. dont pass all arguments
+
+        //        priestInDb.Available = false;
+        //        priestInDb.Church.Name = priest.Church.Name;
+        //         priestInDb.Church.Id = priest.Church.Id;
+
+        //        try
+        //    {
+        //        _context.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException e)
+        //    {
+        //        Console.WriteLine(e);
+        //    }
+        //    return RedirectToAction("AssignPriestToChurch", "Priests");
+        //}
 
 
 
@@ -143,10 +174,7 @@ namespace MyFirstMVC.Controllers
                 var errors = ModelState.Select(x => x.Value.Errors)
                           .Where(y => y.Count > 0)
                           .ToList();
-
-
                 return View("New", priest);
-
             }
 
             //Έλεγχος νέου ιερέα.
@@ -162,7 +190,6 @@ namespace MyFirstMVC.Controllers
                 //TryUpdateModel(priestInDb); //official approach secur issues.
                 //Mapper.Map(priest,priestInDb) ///dto in request. dont pass all arguments
 
-
                 priestInDb.Name = priest.Name;
                 priestInDb.LastName = priest.LastName;
                 priestInDb.IsEfimerios = priest.IsEfimerios;
@@ -170,7 +197,8 @@ namespace MyFirstMVC.Controllers
                 priestInDb.IsIerokirikas = priest.IsIerokirikas;
                 priestInDb.PhoneNumber = priest.PhoneNumber;
                 priestInDb.Available = priest.Available;
-
+                //new
+               // priestInDb.Church.Name = priest.Church.Name;
             }
 
 
@@ -222,11 +250,7 @@ namespace MyFirstMVC.Controllers
 
             _context.Priests.Remove(priest);
             _context.SaveChanges();
-
-
-
             return RedirectToAction("Index", "Priests");
-
         }
 
         public ActionResult PriestForm()

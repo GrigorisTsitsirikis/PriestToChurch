@@ -41,7 +41,7 @@
     <h2> Αδυναμία εύρεσης ιερέων.</h2>
     <p>
         <strong>
-            Δεν υπάρχει κανένας διαθέσιμος ιερέας στη βάση δεδομένων σε κάποια κατηγορία (εφημέριος,εποχιακός,ιεροκήρυκας).<br>
+            Δεν υπάρχει κανένας ιερέας στη βάση δεδομένων σε κάποια κατηγορία (εφημέριος,εποχιακός,ιεροκήρυκας).<br>
             Παρακαλώ εισάγεται κάποιον πηγαίνοντας στην καρτέλα --> <a href="/Priests/Index"> "Επεξεργασία Ιερέα" </a>
         </strong>
     </p>
@@ -52,7 +52,7 @@ else if (Model.AssignedChurches.Count == 0)
     <p>
         <strong>
             Δεν υπάρχει καμμία εκκλησία στη βάση δεδομένων.<br>
-            Παρακαλώ εισάγεται κάποιον πηγαίνοντας στην καρτέλα --> <a href="/Churches/New"> "Προσθήκη εκκλησίας" </a>
+            Παρακαλώ εισάγεται εκκλησία πηγαίνοντας στην καρτέλα --> <a href="/Churches/New"> "Προσθήκη εκκλησίας" </a>
         </strong>
     </p>
 }
@@ -81,9 +81,9 @@ else
         </div>
 
 
-        @Html.EditorFor(model => model.DatePicker, new { @class = "datepicker" });
+       // @Html.EditorFor(model => model.DatePicker, new { @class = "datepicker" });
 
-       // @Html.ActionLink("test", "PriestChurch/" + Id, "Priests", null, new { @class = "btn btn-primary" })*@
+       // @Html.ActionLink("Αναθεση", "PriestChurch", "Priests", null, new { @class = "btn btn-primary" })
         <button type="submit" class="btn btn-primary">Αναθεση</button>
     }
 }

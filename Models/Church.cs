@@ -12,6 +12,7 @@ namespace MyFirstMVC.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Όνομα Ενορίας")]
         public string Name { get; set; }
     }
 }

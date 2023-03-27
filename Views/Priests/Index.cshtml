@@ -47,7 +47,7 @@ else
                 <th>Αριθμός Τηλεφώνου</th>
                 <th>Θέση</th>
                 <th>Διαθεσιμότητα</th>
-                <th>Επεξεργασία Ιερέα</th>
+                <th>Διαγραφή Ιερέα</th>
 
 
             </tr>
@@ -55,19 +55,20 @@ else
         <tbody>
             @foreach (var priest in Model.Priests)
             {
-
+               
                 i = i + 1;
+               // var churchName = priest?.Church?.Name;
 
             <tr>
                 <td><text>@i</text></td>
 
                 <td>@Html.ActionLink(@priest.LastName, "Edit/" + priest.Id, "Priests", null, null)</td>
                 <td><text>@priest.Name</text></td>
-                <td>Ένορία @priest.Id</td>
+                <td>@(priest?.Church?.Name) </td>
                 <td>@priest.PhoneNumber</td>
                 <td>@(priest.IsEfimerios ? "Εφημέριος" : priest.IsEpoxiakos ? "Εφημέριος-Εποχιακός" : priest.IsIerokirikas? "Ιεροκήρυκας" : null)</td>
                 <td>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
-                <td>@Html.ActionLink("Μονιμη Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
+                <td>@Html.ActionLink("Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
 
             </tr>
 

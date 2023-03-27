@@ -33,6 +33,15 @@
         @Html.ValidationMessageFor(m => m.PhoneNumber)
     </div>
 
+    @*//testing
+    <div class="form-group">
+        <h4>
+            @Html.LabelFor(m => m.Church.Name)
+        </h4>
+        @Html.TextBoxFor(m => m.Church.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Church.Name)
+    </div>*@
+
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.IsEfimerios) Εφημέριος
@@ -58,19 +67,7 @@
         </label>
     </div>
 
-
-
-
-
-
-    @*<div class="form-group">
-            <h4>
-                @Html.LabelFor(m => m.Church.Id)
-            </h4>
-            @Html.TextBoxFor(m => m.Church.Id, new { @class = "form-control" })
-        </div>
-    *@
-
+   
 
     @Html.HiddenFor(m => m.Id);
 

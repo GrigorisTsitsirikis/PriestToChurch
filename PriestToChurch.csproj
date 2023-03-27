@@ -234,11 +234,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\αγ.παρασκευη.jpg" />
+    <Content Include="Images\Μητρόπολη 2.jpg" />
+    <Content Include="Images\Μητρόπολη.jpg" />
     <Content Include="Migrations\προδιαγραφές.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Μητρόπολη 2.jpg" />
-    <Content Include="Μητρόπολη.jpg" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

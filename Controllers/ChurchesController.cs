@@ -20,8 +20,6 @@ namespace MyFirstMVC.Controllers
 
         }
 
-
-
         // GET: Church
         public ActionResult Index()
         {
@@ -80,14 +78,10 @@ namespace MyFirstMVC.Controllers
 
             if (!ModelState.IsValid)
             {
-
                 var errors = ModelState.Select(x => x.Value.Errors)
                           .Where(y => y.Count > 0)
                           .ToList();
-
-
                 return View("New", church);
-
             }
 
             //Έλεγχος νέας εκκλησίας.
@@ -99,10 +93,7 @@ namespace MyFirstMVC.Controllers
             else
             {
                 var churchInDb = _context.Churches.Single(c => c.Id == church.Id);
-
-
                 churchInDb.Name = church.Name;
-
             }
             try
             {
@@ -135,14 +126,6 @@ namespace MyFirstMVC.Controllers
             return RedirectToAction("Index", "Churches");
 
         }
-
-
-
-
-
-
-
-
 
 
         private List<Church> GetChurches()
