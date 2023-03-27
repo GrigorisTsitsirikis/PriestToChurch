@@ -67,7 +67,7 @@ else
                 <td>@(priest?.Church?.Name) </td>
                 <td>@priest.PhoneNumber</td>
                 <td>@(priest.IsEfimerios ? "Εφημέριος" : priest.IsEpoxiakos ? "Εφημέριος-Εποχιακός" : priest.IsIerokirikas? "Ιεροκήρυκας" : null)</td>
-                <td>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
+                <td style=@(priest.Available ? "color:green": "color:red")>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
                 <td>@Html.ActionLink("Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
 
             </tr>
