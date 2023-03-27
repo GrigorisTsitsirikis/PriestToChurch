@@ -171,6 +171,10 @@
     <Compile Include="Migrations\202005302334350_UpdateDb.Designer.cs">
       <DependentUpon>202005302334350_UpdateDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303271833078_ChurchTypes.cs" />
+    <Compile Include="Migrations\202303271833078_ChurchTypes.designer.cs">
+      <DependentUpon>202303271833078_ChurchTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Church.cs" />
@@ -303,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005302334350_UpdateDb.resx">
       <DependentUpon>202005302334350_UpdateDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303271833078_ChurchTypes.resx">
+      <DependentUpon>202303271833078_ChurchTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

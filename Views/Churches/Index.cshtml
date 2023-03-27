@@ -31,6 +31,7 @@ else
             <tr>
                 <th>A/A</th>
                 <th>Ενορία</th>
+                <th>Tύπος Ενορίας</th>
                 <th>Διαγραφή Ενορίας</th>
 
 
@@ -46,6 +47,9 @@ else
                     <td><text>@i</text></td>
 
                     <td>@Html.ActionLink(church.Name, "Edit/" + church.Id, "churches", null, null)</td>
+
+                    <td>@(church.IsBasic ? "Βασική" : church.IsOreini? "Ορεινή" : null)</td>
+
                     <td>@Html.ActionLink("Διαγραφη", "Delete/" + church.Id, "churches", null, new { @class = "btn btn-primary" })</td>
 
                 </tr>

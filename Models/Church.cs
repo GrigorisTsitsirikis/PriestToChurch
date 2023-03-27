@@ -14,5 +14,17 @@ namespace MyFirstMVC.Models
         [StringLength(50)]
         [Display(Name = "Όνομα Ενορίας")]
         public string Name { get; set; }
+
+        [Display(Name = "Βασική")]
+        public bool IsBasic { get; set; }
+
+        [Display(Name = "Ορεινή")]
+        public bool IsOreini { get; set; }
+
+        [Display(Name = "Πανηγυρίζουσα")]
+        public bool IsPanigirizousa { get; set; }
+
+        [Display(Name = "Ιερα Μονή")]
+        public bool IsIeraMoni { get; set; }
     }
 }

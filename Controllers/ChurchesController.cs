@@ -94,6 +94,10 @@ namespace MyFirstMVC.Controllers
             {
                 var churchInDb = _context.Churches.Single(c => c.Id == church.Id);
                 churchInDb.Name = church.Name;
+                churchInDb.IsBasic = church.IsBasic;
+                churchInDb.IsOreini = church.IsOreini;
+                churchInDb.IsIeraMoni = church.IsIeraMoni;
+                churchInDb.IsPanigirizousa = church.IsPanigirizousa;
             }
             try
             {

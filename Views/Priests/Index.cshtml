@@ -1,6 +1,15 @@
 ﻿@model MyFirstMVC.ViewModels.PriestsModel
 
 
+<!-- 
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css">
+<link rel="stylesheet" href="../dist/bootstrap-table-filter.min.css">
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.js"></script> 
+<script src="../dist/bootstrap-table-filter.min.js"></script>
+    -->
+
 @{
     ViewBag.Message = "Priests";
     int i = 0;
@@ -31,48 +40,43 @@
 }
 
 
-
-
 else
 {
     <h2>Πλήρης Λίστα Ιερέων</h2>
     <div>@Html.ActionLink("Προσθηκη", "New", "Priests", null, new { @class = "btn btn-primary" })</div>
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" data-toggle="table" data-filter="true">
         <thead>
             <tr>
-                <th>A/A</th>
-                <th>Επίθετο</th>
-                <th>Όνομα</th>
-                <th>Ενορία</th>
-                <th>Αριθμός Τηλεφώνου</th>
-                <th>Θέση</th>
-                <th>Διαθεσιμότητα</th>
-                <th>Διαγραφή Ιερέα</th>
-
+                <th data-field="ItemId" data-sortable="true">A/A</th>
+                <th data-field="ItemId2" data-sortable="true">Επίθετο</th>
+                <th data-field="ItemId3" data-sortable="true">Όνομα</th>
+                <th data-field="ItemId4" data-sortable="true">Ενορία</th>
+                <th data-field="ItemId5" data-sortable="true">Αριθμός Τηλεφώνου</th>
+                <th data-field="ItemId6" data-sortable="true">Θέση</th>
+                <th data-field="ItemId7" data-sortable="true">Διαθεσιμότητα</th>
+                <th data-field="ItemId8" data-sortable="true">Διαγραφή Ιερέα</th>
 
             </tr>
         </thead>
         <tbody>
             @foreach (var priest in Model.Priests)
             {
-               
+
                 i = i + 1;
-               // var churchName = priest?.Church?.Name;
+               
 
-            <tr>
-                <td><text>@i</text></td>
+                <tr>
+                    <td><text>@i</text></td>
 
-                <td>@Html.ActionLink(@priest.LastName, "Edit/" + priest.Id, "Priests", null, null)</td>
-                <td><text>@priest.Name</text></td>
-                <td>@(priest?.Church?.Name) </td>
-                <td>@priest.PhoneNumber</td>
-                <td>@(priest.IsEfimerios ? "Εφημέριος" : priest.IsEpoxiakos ? "Εφημέριος-Εποχιακός" : priest.IsIerokirikas? "Ιεροκήρυκας" : null)</td>
-                <td style=@(priest.Available ? "color:green": "color:red")>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
-                <td>@Html.ActionLink("Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
+                    <td>@Html.ActionLink(@priest.LastName, "Edit/" + priest.Id, "Priests", null, null)</td>
+                    <td><text>@priest.Name</text></td>
+                    <td>@(priest?.Church?.Name) </td>
+                    <td>@priest.PhoneNumber</td>
+                    <td>@(priest.IsEfimerios ? "Εφημέριος" : priest.IsEpoxiakos ? "Εφημέριος-Εποχιακός" : priest.IsIerokirikas? "Ιεροκήρυκας" : null)</td>
+                    <td style=@(priest.Available ? "color:green": "color:red")>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
+                    <td>@Html.ActionLink("Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
 
-            </tr>
-
-
+                </tr>
             }
         </tbody>
     </table>
