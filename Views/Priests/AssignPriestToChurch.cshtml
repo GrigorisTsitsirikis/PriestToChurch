@@ -22,19 +22,14 @@
 <link rel="stylesheet" href="~/Content/chosen.css">
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 
-
 @section scripts {
     <script src="~/Scripts/chosen.jquery.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script>$('.chosen-select').chosen();</script>
-    <script>
-        $(function () {
-            $(".datepicker").datepicker(
-                { dateFormat: "yy-mm-dd" }
-            );
-    </script>
+
 
 }
+
 
 @if (Model.Efimerioi.Count == 0 && Model.Epoxiakoi.Count == 0 && Model.Ierokyrikes.Count == 0)
 {
@@ -67,7 +62,7 @@ else
 
             @Html.LabelFor(m => m.AllAvailablePriests)
             @*@Html.DropDownListFor(m => m.AllAvailablePriests, new SelectList(Model.AllAvailablePriests, "LastName", "LastName", "Επιλέξτε Διαθέσιμο  Ιερέα για ανάθεση"), new { @class = "form-control chosen-select" })*@
-            @Html.DropDownListFor(x => x.AllAvailablePriests, Model.AllAvailablePriests.Select(x => new SelectListItem { Text = x.LastName.ToString() + " " + x.Name.ToString(), Value = x.LastName.ToString()}), new { @class = "form-control chosen-select" })
+            @Html.DropDownListFor(x => x.AllAvailablePriests, Model.AllAvailablePriests.Select(x => new SelectListItem { Text = x.LastName.ToString() + " " + x.Name.ToString(), Value = x.LastName.ToString() }), new { @class = "form-control chosen-select" })
         </div>
 
         <h2> Εκκλησίες</h2>
@@ -80,11 +75,22 @@ else
 
         </div>
 
+        <form method="post">
+                <label for="datepicker">Ημερομηνία Ανάθεσης</label>
+                <input type="date" id="datepicker" name="datepicker">
+                <!---<input type="submit" value="Submit">-->
+                <button type="submit" class="btn btn-primary">Αναθεση</button>
+            </form>
 
-       // @Html.EditorFor(model => model.DatePicker, new { @class = "datepicker" });
 
-       // @Html.ActionLink("Αναθεση", "PriestChurch", "Priests", null, new { @class = "btn btn-primary" })
-        <button type="submit" class="btn btn-primary">Αναθεση</button>
+<!--<div class="form-group">
+    <label asp-for=@Model.DatePicker></label>
+    <input asp-for="@Model.DatePicker" type="date" class="form-control" />
+    <span asp-validation-for="@Model.DatePicker" class="text-danger"></span>-->
+    @*<button type="submit" class="btn btn-primary">Αναθεση</button>*@
+    <!--<input type="submit" class="btn btn-primary" value="Αναθεση">
+</div>-->
+
     }
 }
 

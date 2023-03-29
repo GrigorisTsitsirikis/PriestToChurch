@@ -175,6 +175,14 @@
     <Compile Include="Migrations\202303271833078_ChurchTypes.designer.cs">
       <DependentUpon>202303271833078_ChurchTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303290044367_PriestModelChange.cs" />
+    <Compile Include="Migrations\202303290044367_PriestModelChange.designer.cs">
+      <DependentUpon>202303290044367_PriestModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303290052077_PriestModelChange2.cs" />
+    <Compile Include="Migrations\202303290052077_PriestModelChange2.designer.cs">
+      <DependentUpon>202303290052077_PriestModelChange2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Church.cs" />
@@ -310,6 +318,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303271833078_ChurchTypes.resx">
       <DependentUpon>202303271833078_ChurchTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303290044367_PriestModelChange.resx">
+      <DependentUpon>202303290044367_PriestModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303290052077_PriestModelChange2.resx">
+      <DependentUpon>202303290052077_PriestModelChange2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

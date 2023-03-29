@@ -30,10 +30,8 @@ namespace MyFirstMVC.Models
         [Display(Name = "Αριθμός Τηλεφώνου")]
         public string PhoneNumber { get; set; }
 
-       
         [Display(Name = "Ενορία")]
         public Church Church { get; set; }
-
 
         [Display(Name = "Εφημέριος")]
         public bool IsEfimerios { get; set; }
@@ -44,11 +42,12 @@ namespace MyFirstMVC.Models
         [Display(Name = "Ιεροκήρυκας")]
         public bool IsIerokirikas { get; set; }
 
-        /// <summary>
-        /// temporary addition of availability.
-        /// </summary>
         [Display(Name = "Διαθέσιμος")]
-        public bool  Available{ get; set; }
+        public bool Available{ get; set; }
+
+        //[Required(ErrorMessage = "H ημερομηνία ανάθεσης είναι υποχρεωτική")]
+        [Display(Name = "Ημερομηνία ανάθεσης")]
+        public DateTime? DatePicker { get; set; }
 
     }
 }

@@ -84,15 +84,17 @@ namespace MyFirstMVC.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult PriestΤοChurch(FormCollection form)
+        public ActionResult PriestΤοChurch(FormCollection form, DateTime datepicker)
         {
             ViewBag.Message = "test";
 
             string priestLastName = form["AllAvailablePriests"].ToString();
             string churchName = form["AssignedChurches"].ToString();
 
+
             var priestInDb = _context.Priests.Single(p => p.LastName == priestLastName);
             priestInDb.Available = false;
+            priestInDb.DatePicker = datepicker;
 
             var churchInDb = _context.Churches.Single(c => c.Name == churchName);
             priestInDb.Church = churchInDb;

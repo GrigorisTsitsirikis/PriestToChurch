@@ -25,7 +25,6 @@ namespace MyFirstMVC.ViewModels
         [Display(Name = "Διαθέσιμοι Ιερείς")]
         public List<Priest> AllAvailablePriests { get; set; }
 
-
         [Display(Name = "Ημερομηνία ανάθεσης")]
         public DateTime? DatePicker { get; set; }
     }

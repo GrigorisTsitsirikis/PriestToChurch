@@ -54,7 +54,8 @@ else
                 <th data-field="ItemId5" data-sortable="true">Αριθμός Τηλεφώνου</th>
                 <th data-field="ItemId6" data-sortable="true">Θέση</th>
                 <th data-field="ItemId7" data-sortable="true">Διαθεσιμότητα</th>
-                <th data-field="ItemId8" data-sortable="true">Διαγραφή Ιερέα</th>
+                <th data-field="ItemId8" data-sortable="true">Ημερομηνία Ανάθεσης</th>
+                <th data-field="ItemId9" data-sortable="true">Διαγραφή Ιερέα</th>
 
             </tr>
         </thead>
@@ -74,6 +75,8 @@ else
                     <td>@priest.PhoneNumber</td>
                     <td>@(priest.IsEfimerios ? "Εφημέριος" : priest.IsEpoxiakos ? "Εφημέριος-Εποχιακός" : priest.IsIerokirikas? "Ιεροκήρυκας" : null)</td>
                     <td style=@(priest.Available ? "color:green": "color:red")>@(priest.Available ? "Διαθέσιμος" : "Μη Διαθέσιμος" )</td>
+                    <td><text>@(priest?.DatePicker)</text></td>
+
                     <td>@Html.ActionLink("Διαγραφη", "Delete/" + priest.Id, "Priests", null, new { @class = "btn btn-primary" })</td>
 
                 </tr>
