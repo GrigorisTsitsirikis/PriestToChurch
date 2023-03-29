@@ -62,7 +62,7 @@ else
 
             @Html.LabelFor(m => m.AllAvailablePriests)
             @*@Html.DropDownListFor(m => m.AllAvailablePriests, new SelectList(Model.AllAvailablePriests, "LastName", "LastName", "Επιλέξτε Διαθέσιμο  Ιερέα για ανάθεση"), new { @class = "form-control chosen-select" })*@
-            @Html.DropDownListFor(x => x.AllAvailablePriests, Model.AllAvailablePriests.Select(x => new SelectListItem { Text = x.LastName.ToString() + " " + x.Name.ToString(), Value = x.LastName.ToString() }), new { @class = "form-control chosen-select" })
+            @Html.DropDownListFor(x => x.AllAvailablePriests, Model.AllAvailablePriests.Select(x => new SelectListItem { Text = x.LastName.ToString() + " " + x.Name.ToString(), Value = x.LastName.ToString() + " " + x.Name.ToString() }), new { @class = "form-control chosen-select" })
         </div>
 
         <h2> Εκκλησίες</h2>

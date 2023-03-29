@@ -88,11 +88,15 @@ namespace MyFirstMVC.Controllers
         {
             ViewBag.Message = "test";
 
-            string priestLastName = form["AllAvailablePriests"].ToString();
+            string priestFullName = form["AllAvailablePriests"].ToString();
             string churchName = form["AssignedChurches"].ToString();
 
+            var priestNames=priestFullName.Split(' ');
 
-            var priestInDb = _context.Priests.Single(p => p.LastName == priestLastName);
+            var priestLastName = priestNames[0];
+            var priestFirstName = priestNames[1];
+
+            var priestInDb = _context.Priests.Single(p => p.LastName == priestLastName && p.Name == priestFirstName);
             priestInDb.Available = false;
             priestInDb.DatePicker = datepicker;
 
