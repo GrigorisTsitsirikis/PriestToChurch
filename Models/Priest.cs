@@ -30,7 +30,7 @@ namespace MyFirstMVC.Models
         [Display(Name = "Αριθμός Τηλεφώνου")]
         public string PhoneNumber { get; set; }
 
-        [StringLength(50)]
+       
         [Display(Name = "Ενορία")]
         public Church Church { get; set; }
 

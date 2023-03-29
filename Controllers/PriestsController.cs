@@ -3,6 +3,7 @@ using MyFirstMVC.Models;
 using MyFirstMVC.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -19,14 +20,12 @@ namespace MyFirstMVC.Controllers
         public PriestsController()
         {
             _context = new ApplicationDbContext();
-
         }
 
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
         }
-
 
         // GET: Priest
         public ActionResult Index()
@@ -42,9 +41,7 @@ namespace MyFirstMVC.Controllers
                 Churches=churches
 
             };
-
             return View(viewModel);
-
         }
 
         // Get: Priest Categories
@@ -71,10 +68,7 @@ namespace MyFirstMVC.Controllers
                 AllAvailablePriests=availablePriests.OrderBy(x=>x.LastName).ToList()
 
             };
-
             return View(viewModel);
-
-
         }
 
         public ActionResult AssignPriestToChurch()
@@ -85,26 +79,29 @@ namespace MyFirstMVC.Controllers
             return model;
         }
 
-
         /// <summary>
-        /// in progress
+        /// Assign Priests To Churches
         /// </summary>
-        /// <param name="priestCategories"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult PriestChurch(PriestCategories priestCategories)
+        public ActionResult PriestΤοChurch(FormCollection form)
         {
-
             ViewBag.Message = "test";
 
-            var availablePriests = priestCategories.AllAvailablePriests;
+            string priestLastName = form["AllAvailablePriests"].ToString();
+            string churchName = form["AssignedChurches"].ToString();
 
-            //  var priestInDb = _context.Priests.Single(p => p.Id == priestCategories.AllAvailablePriests.Find(x=>x.Id);
-            //priestInDb.Available = false;
+            var priestInDb = _context.Priests.Single(p => p.LastName == priestLastName);
+            priestInDb.Available = false;
+
+            var churchInDb = _context.Churches.Single(c => c.Name == churchName);
+            priestInDb.Church = churchInDb;
+            
 
             try
             {
                 _context.SaveChanges();
+
             }
             catch (DbEntityValidationException e)
             {
@@ -112,40 +109,6 @@ namespace MyFirstMVC.Controllers
             }
             return RedirectToAction("AssignPriestToChurch", "Priests");
         }
-
-
-        ///// <summary>
-        ///// τεστ 2
-        ///// </summary>
-        ///// <param name="priestCategories"></param>
-        ///// <returns></returns>
-        //[HttpPost]
-        //public ActionResult PriestChurch(Priest priest)
-        //{
-
-        //    ViewBag.Message = "test";
-
-        //        var priestInDb = _context.Priests.Single(p => p.Id == priest.Id);
-
-        //        //TryUpdateModel(priestInDb); //official approach secur issues.
-        //        //Mapper.Map(priest,priestInDb) ///dto in request. dont pass all arguments
-
-        //        priestInDb.Available = false;
-        //        priestInDb.Church.Name = priest.Church.Name;
-        //         priestInDb.Church.Id = priest.Church.Id;
-
-        //        try
-        //    {
-        //        _context.SaveChanges();
-        //    }
-        //    catch (DbEntityValidationException e)
-        //    {
-        //        Console.WriteLine(e);
-        //    }
-        //    return RedirectToAction("AssignPriestToChurch", "Priests");
-        //}
-
-
 
         /// <summary>
         /// Creates a New Priest and adds in the List of Priests.
@@ -200,8 +163,6 @@ namespace MyFirstMVC.Controllers
                 //new
                // priestInDb.Church.Name = priest.Church.Name;
             }
-
-
             try
             {
                 _context.SaveChanges();
@@ -213,36 +174,24 @@ namespace MyFirstMVC.Controllers
             return RedirectToAction("Index", "Priests");
         }
 
-
-
         public ActionResult Details(int id)
         {
-            
             var priest = _context.Priests.SingleOrDefault(x => x.Id == id); 
-
             if (priest == null) { return HttpNotFound(); }
-
             return View(priest);
-
         }
-
 
         public ActionResult Edit(int id)
         {
-
             var priest = _context.Priests.SingleOrDefault(x => x.Id == id);
 
             if (priest == null) { return HttpNotFound(); }
-
-
             return View("New", priest);
-
         }
 
         public ActionResult Delete(int id)
         {
             var Priests = _context.Priests.ToList();
-
 
             var priest = Priests.SingleOrDefault(x => x.Id == id);
 
@@ -255,15 +204,11 @@ namespace MyFirstMVC.Controllers
 
         public ActionResult PriestForm()
         {
-
             var viewModel = new PriestFormViewModel
             {
                 Churches = _context.Churches.ToList()
             };
-
             return View("PriestForm", viewModel);
         }
-
-
     }
 }

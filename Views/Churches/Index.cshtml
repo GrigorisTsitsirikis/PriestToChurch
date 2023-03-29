@@ -1,8 +1,5 @@
 ﻿@model MyFirstMVC.ViewModels.PriestsModel
 
-
-
-
 @{
     ViewBag.Message = "Churches";
     int i = 0;
@@ -16,7 +13,7 @@
 }
 
 
-<h2 class=@className>Εκκλησίες</h2>
+<!--<h2 class=@className>Εκκλησίες</h2>-->
 
 @if (Model.Churches.Count == 0)
 {
@@ -32,9 +29,9 @@ else
                 <th>A/A</th>
                 <th>Ενορία</th>
                 <th>Tύπος Ενορίας</th>
+                <th>Πανηγυρίζουσα</th>
+                <th>Ιερα Μονή</th>
                 <th>Διαγραφή Ενορίας</th>
-
-
             </tr>
         </thead>
         <tbody>
@@ -49,12 +46,10 @@ else
                     <td>@Html.ActionLink(church.Name, "Edit/" + church.Id, "churches", null, null)</td>
 
                     <td>@(church.IsBasic ? "Βασική" : church.IsOreini? "Ορεινή" : null)</td>
-
+                    <td>@(church.IsPanigirizousa ? "Ναι" : null)</td>
+                    <td>@(church.IsIeraMoni ? "Ναι" : null)</td>
                     <td>@Html.ActionLink("Διαγραφη", "Delete/" + church.Id, "churches", null, new { @class = "btn btn-primary" })</td>
-
                 </tr>
-
-
             }
         </tbody>
     </table>
