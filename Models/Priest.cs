@@ -49,5 +49,6 @@ namespace MyFirstMVC.Models
         [Display(Name = "Ημερομηνία ανάθεσης")]
         public DateTime? DatePicker { get; set; }
 
+   
     }
 }

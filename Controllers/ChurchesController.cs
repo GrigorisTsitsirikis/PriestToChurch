@@ -84,10 +84,23 @@ namespace MyFirstMVC.Controllers
                 return View("New", church);
             }
 
-            //Έλεγχος νέας εκκλησίας.
+            //εκκλησια με ιδιο ακριβώς ονομα δεν επιτρεπεται
+            var nameFound = _context.Churches.FirstOrDefault(x => x.Name == church.Name);
+            if (nameFound != null)
+            {
+                string errorMessage = "Η εκκλησία υπάρχει ήδη στη βάση. Παρακαλώ αλλάξτε όνομα";
+                Console.WriteLine(errorMessage);
+                string script = $@"<script>alert('{errorMessage}');</script>";
 
+
+                return RedirectToAction("Index", "Churches");
+                //return Content(script);
+            }
+
+            //Έλεγχος νέας εκκλησίας.
             if (church.Id == 0)
             {
+              
                 _context.Churches.Add(church);
             }
             else

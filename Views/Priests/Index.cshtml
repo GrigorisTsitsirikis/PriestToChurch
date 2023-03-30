@@ -64,7 +64,13 @@ else
             {
 
                 i = i + 1;
-               
+
+
+                if (priest.DatePicker < DateTime.Now)
+                {
+                    priest.Available = true;
+                    priest.Church = null;
+                }
 
                 <tr>
                     <td><text>@i</text></td>

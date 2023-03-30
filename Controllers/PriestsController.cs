@@ -50,6 +50,27 @@ namespace MyFirstMVC.Controllers
             ViewBag.Message = "AvailableByCategory";
             var Priests = _context.Priests;
 
+
+            //add availabilty for past changes
+            foreach(var priest in Priests)
+            {
+                if(priest.DatePicker< DateTime.Now)
+                {
+                    priest.Available = true;
+                    priest.Church = null;
+                }
+            }
+            try
+            {
+                _context.SaveChanges();
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+
+
             var availableEfimerioi = Priests.Where(x => x.IsEfimerios == true && x.Available == true).OrderBy(x => x.LastName).ToList();
             var availableIerokyrikes = Priests.Where(x => x.IsIerokirikas == true && x.Available == true).OrderBy(x => x.LastName).ToList();
             var availableEpoxiakoi = Priests.Where(x => x.IsEpoxiakos == true && x.Available == true).OrderBy(x => x.LastName).ToList();
@@ -66,7 +87,6 @@ namespace MyFirstMVC.Controllers
                 Epoxiakoi = availableEpoxiakoi,
                 Ierokyrikes = availableIerokyrikes,
                 AllAvailablePriests=availablePriests.OrderBy(x=>x.LastName).ToList()
-
             };
             return View(viewModel);
         }
